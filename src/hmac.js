@@ -1,8 +1,14 @@
 import crypto from 'crypto';
 
-const getHmacComp = (computerMove, key) => {
-  const hmac = crypto.createHmac('sha3-256', key).update(computerMove).digest('hex');
-  return hmac;
-};
+class GetHmacComp {
+  constructor(key) {
+    this.key = key;
+  }
 
-export default getHmacComp;
+  generateHmac(message) {
+    const hmac = crypto.createHmac('sha3-256', this.key).update(message).digest('hex');
+    return hmac;
+  }
+}
+
+export default GetHmacComp;

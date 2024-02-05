@@ -1,22 +1,31 @@
 import Table from 'cli-table';
-import getWinner from './getWinner.js';
+import GetWinner from './getWinner.js';
 
-const getHelp = (moves) => {
-  console.log('\nEnter arguments and do your move.\nThe table of rules is here:');
-  const arrowDown = '\u2193';
-  const tabl = new Table({
-    head: [`User->\n${arrowDown}Computer`, ...moves.map((el) => el.toString())],
-  });
-  for (let i = 0; i < moves.length; i += 1) {
-    const row = [moves[i]];
-    for (let j = 0; j < moves.length; j += 1) {
-      const result = getWinner(moves[j], moves[i], moves);
-      row.push(result);
-    }
-    tabl.push(row);
+class GetHelp {
+  constructor(moves) {
+    this.moves = moves;
+    this.table = new Table({
+      head: [`User->\n${'↓'}Computer`, ...moves.map((el) => el.toString())],
+    });
   }
-  console.log(tabl.toString());
-  console.log('\nOn the left columns: the choice of computer, upside: your choice');
-};
 
-export default getHelp;
+  generateTable() {
+    for (const move of this.moves) {
+      const row = [move];
+      for (const j of this.moves) {
+        const result = new GetWinner(j, move, this.moves).get();
+        row.push(result);
+      }
+      this.table.push(row);
+    }
+  }
+
+  displayTable() {
+    this.generateTable();
+    console.log('\nEnter arguments and do your move.\nThe table of rules is here:');
+    console.log(this.table.toString());
+    console.log('\nOn the left columns: the choice of computer, upside: your choice');
+  }
+}
+
+export default GetHelp;

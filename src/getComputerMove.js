@@ -1,9 +1,15 @@
 import getRandom from './randomMove.js';
 
-const getComputerMove = (argv) => {
-  const computerMoveIndex = getRandom(argv.length - 1);
-  const computerMove = argv[computerMoveIndex - 1];
-  return computerMove;
-};
+class ComputerMove {
+  constructor(argv) {
+    this.argv = argv;
+  }
 
-export default getComputerMove;
+  getComputerMove() {
+    const computerMoveIndex = getRandom(this.argv.length - 1);
+    const computerMove = this.argv[computerMoveIndex - 1];
+    return computerMove;
+  }
+}
+
+export default ComputerMove;

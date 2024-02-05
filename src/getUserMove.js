@@ -1,14 +1,20 @@
 import readlineSync from 'readline-sync';
-import getHelp from './generateTable.js';
+import GetHelp from './generateTable.js';
 
-const getUserMove = (argv) => {
-  const userMoveNum = readlineSync.question('Enter your move: ');
-  const userMove = argv[userMoveNum - 1];
-  // if (userMoveNum === 0) return;
-  if (userMoveNum === '?') {
-    getHelp(argv);
+class UserMove {
+  constructor(argv) {
+    this.argv = argv;
   }
-  return userMove;
-};
 
-export default getUserMove;
+  getUserMove() {
+    const userMoveNum = readlineSync.question('Enter your move: ');
+    const userMove = this.argv[userMoveNum - 1];
+    if (userMoveNum === '?') {
+      const table = new GetHelp(this.argv);
+      table.displayTable();
+    }
+    return userMove;
+  }
+}
+
+export default UserMove;
