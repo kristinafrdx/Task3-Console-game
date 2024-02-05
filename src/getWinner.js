@@ -14,12 +14,12 @@ const getWinner = (userMove, compInd, moves) => {
   // const win = withoutStartElem.slice(0, middle);
   const lose = withoutStartElem.slice(middle);
   if (compInd === userMove) {
-    return 'draw';
+    return "It's a draw!";
   }
   if (lose.includes(compInd)) {
-    return 'win';
+    return 'You win!';
   }
-  return 'lose';
+  return 'You lose!';
 };
 
 export default getWinner;

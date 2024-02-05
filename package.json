@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "cli-table": "^0.3.11",
+    "crypto": "^1.0.1",
     "lodash": "^4.17.21",
     "readline-sync": "^1.4.10",
     "table": "^6.8.1"
