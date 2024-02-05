@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import getWinner from './getWinner.js';
 import getUserMove from './getUserMove.js';
-import dysplayMoves from './dysplayMoves.js';
+import showMoves from './showMoves.js';
 import getComputerMove from './getComputerMove.js';
 import getHmacComp from './hmac.js';
 
@@ -18,7 +18,7 @@ const startGame = (argv) => {
   const computerMove = getComputerMove(argv);
   const hmacComp = getHmacComp(computerMove, key);
   console.log(`HMAC: ${hmacComp}`);
-  console.log(dysplayMoves(argv));
+  console.log(showMoves(argv));
   const userMove = getUserMove(argv);
   if (!userMove) {
     console.log('Exiting the game...');

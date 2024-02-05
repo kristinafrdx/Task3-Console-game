@@ -1,4 +1,4 @@
-const dysplayMoves = (argv) => {
+const showMoves = (argv) => {
   const availableMoves = {};
   argv.forEach((el, i) => {
     availableMoves[i + 1] = el;
@@ -9,4 +9,4 @@ const dysplayMoves = (argv) => {
   return `Available moves:\n${number}${instruction}`;
 };
 
-export default dysplayMoves;
+export default showMoves;

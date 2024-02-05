@@ -11,7 +11,6 @@ const getWinner = (userMove, compInd, moves) => {
   const res = _.uniq(newAr);
   const withoutStartElem = res.filter((el) => el !== userMove);
   const middle = withoutStartElem.length / 2;
-  // const win = withoutStartElem.slice(0, middle);
   const lose = withoutStartElem.slice(middle);
   if (compInd === userMove) {
     return "It's a draw!";
