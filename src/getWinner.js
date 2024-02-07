@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-class GetWinner {
+class Winner {
   constructor(userMove, compMove, moves) {
     this.userMove = userMove;
     this.compInd = compMove;
@@ -29,4 +29,4 @@ class GetWinner {
   }
 }
 
-export default GetWinner;
+export default Winner;

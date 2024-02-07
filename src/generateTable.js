@@ -1,7 +1,7 @@
 import Table from 'cli-table';
-import GetWinner from './getWinner.js';
+import Winner from './getWinner.js';
 
-class GetHelp {
+class Help {
   constructor(moves) {
     this.moves = moves;
     this.table = new Table({
@@ -13,7 +13,7 @@ class GetHelp {
     for (const move of this.moves) {
       const row = [move];
       for (const j of this.moves) {
-        const result = new GetWinner(j, move, this.moves).get();
+        const result = new Winner(j, move, this.moves).get();
         row.push(result);
       }
       this.table.push(row);
@@ -28,4 +28,4 @@ class GetHelp {
   }
 }
 
-export default GetHelp;
+export default Help;

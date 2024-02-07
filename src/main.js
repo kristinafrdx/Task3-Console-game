@@ -1,8 +1,8 @@
 import crypto from 'crypto';
-import GetWinner from './getWinner.js';
+import Winner from './getWinner.js';
 import UserMove from './getUserMove.js';
 import Moves from './showMoves.js';
-import GetHmacComp from './hmac.js';
+import HmacComp from './hmac.js';
 import ComputerMove from './getComputerMove.js';
 
 class Game {
@@ -24,7 +24,7 @@ class Game {
     const computer = new ComputerMove(this.argv);
     const computerMove = computer.getComputerMove();
 
-    const hmacComp = new GetHmacComp(key);
+    const hmacComp = new HmacComp(key);
     console.log(`HMAC: ${hmacComp.generateHmac(computerMove)}`);
 
     const moves = new Moves(this.argv);
@@ -33,13 +33,13 @@ class Game {
     const user = new UserMove(this.argv);
     const userMove = user.getUserMove();
 
-    if (!userMove) {
-      console.log('Exiting the game...');
+    if (!userMove || !this.argv.includes(userMove)) {
+      console.log('Your move incorrect');
       return;
     }
     console.log(`Your move: ${userMove}`);
     console.log(`Computer move: ${computerMove}`);
-    console.log(new GetWinner(userMove, computerMove, this.argv).get());
+    console.log(new Winner(userMove, computerMove, this.argv).get());
     console.log(`HMAC-key: ${key}`);
   }
 }

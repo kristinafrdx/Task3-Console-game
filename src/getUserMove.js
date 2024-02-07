@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import GetHelp from './generateTable.js';
+import Help from './generateTable.js';
 
 class UserMove {
   constructor(argv) {
@@ -10,7 +10,7 @@ class UserMove {
     const userMoveNum = readlineSync.question('Enter your move: ');
     const userMove = this.argv[userMoveNum - 1];
     if (userMoveNum === '?') {
-      const table = new GetHelp(this.argv);
+      const table = new Help(this.argv);
       table.displayTable();
     }
     return userMove;

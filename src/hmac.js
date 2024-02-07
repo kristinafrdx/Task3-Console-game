@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-class GetHmacComp {
+class HmacComp {
   constructor(key) {
     this.key = key;
   }
@@ -11,4 +11,4 @@ class GetHmacComp {
   }
 }
 
-export default GetHmacComp;
+export default HmacComp;
